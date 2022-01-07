@@ -720,8 +720,8 @@
            ;; closure-tオブジェクトがcstackかestackのどちらにあるかによって変換結果が変わる
            #'(lambda ()
                (ecase (lw:where-nf-object id find-finfo)
-                 ((:cstack) ~(ptr ,id))
-                 ((:estack) ~(ptr (fref efp -> ,id))))) )))
+                 ((:cstack) ~(the ,texp (ptr ,id)))
+                 ((:estack) ~(the ,texp (ptr (fref efp -> ,id)))))) )))
        ((nil)                           ; 処理不要
         ~(the ,texp ,id) )
        (otherwise
@@ -736,7 +736,7 @@
        (gettype (funcall promise))
        (next-pattern)))
   ((#?(the ,texp ,exp))
-   texp)
+   (type-expression texp))
   (otherwise
    (ierror "gettype: ~S is not expression." x))
   )
