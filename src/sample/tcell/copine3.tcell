@@ -1318,7 +1318,7 @@
     ;; skip a comment line
     (if (!= (csym::strncmp buff "#" 1) 0)
       (begin
-        (= v (csym::atoi (csym::strtok buff "~|11|")))
+        (= v (csym::atoi (csym::strtok buff "~|11| ")))
 
         ;; enter v to eHash
         (csym::sprintf temp "%d" v)
@@ -1421,20 +1421,20 @@
     ;; skip a comment line
     (if (!= (csym::strncmp buff "#" 1) 0)
       (begin
-        (= v1 (csym::atoi (csym::strtok buff "~|11|")))
-        (= eLabel (csym::strtok NULL "~|11|"))
-        (= v2 (csym::atoi (csym::strtok NULL "~|11|")))
-        (= empty (csym::strtok NULL "~|11|"))
+        (= v1 (csym::atoi (csym::strtok buff "~|11| ")))
+        (= eLabel (csym::strtok NULL "~|11| "))
+        (= v2 (csym::atoi (csym::strtok NULL "~|11| ")))
+        (= empty (csym::strtok NULL "~|11| "))
 
         ;; find v1 from eHash
         (csym::sprintf temp "%d" v1)
-	(= (fref he key) temp)
+      	(= (fref he key) temp)
         (csym::hsearch_r he FIND (ptr hep) eHash)
         (if (== hep NULL)
           (continue))
         (= v1 (cast int (fref hep -> data)))
 
-	;; find v2 from eHash
+	      ;; find v2 from eHash
         (csym::sprintf temp "%d" v2)
         (= (fref he key) temp)
         (csym::hsearch_r he FIND (ptr hep) eHash)

@@ -743,7 +743,7 @@
     ;; skip a comment line
     (if (!= (csym::strncmp buff "#" 1) 0)
       (begin
-        (= v (csym::atoi (csym::strtok buff "~|11|")))
+        (= v (csym::atoi (csym::strtok buff "~|11| ")))
 
         ;; find v from eHash
         (csym::sprintf temp "%d" v)
@@ -844,10 +844,10 @@
     ;; skip a comment line
     (if (!= (csym::strncmp buff "#" 1) 0)
       (begin
-        (= v1 (csym::atoi (csym::strtok buff "~|11|")))
-        (= eLabel (csym::strtok NULL "~|11|"))
-        (= v2 (csym::atoi (csym::strtok NULL "~|11|")))
-        (= empty (csym::strtok NULL "~|11|"))
+        (= v1 (csym::atoi (csym::strtok buff "~|11| ")))
+        (= eLabel (csym::strtok NULL "~|11| "))
+        (= v2 (csym::atoi (csym::strtok NULL "~|11| ")))
+        (= empty (csym::strtok NULL "~|11| "))
 
         ;; enter v1 to eHash
         (csym::sprintf temp "%d" v1)
