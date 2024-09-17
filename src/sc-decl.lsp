@@ -49,7 +49,7 @@
           else do (write-char ch s))))
 
 #+clisp
-(defun gethostname () (let ((s (machine-instance))) (subseq s 0 (position #\Space s))))
+(defun gethostname () (let ((s (machine-instance))) (string-right-trim "." (subseq s 0 (position #\Space s)))))
 #+(and allegro (not mswindows))
 (defun gethostname () (excl.osi:gethostname))
 #+(and allegro mswindows)
